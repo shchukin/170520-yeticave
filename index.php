@@ -36,6 +36,7 @@ $user_avatar = 'img/user.jpg';
             </div>
             <div class="user-menu__logged">
                 <p><?php printf($user_name); ?></p>
+                <a href="#">Выйти</a> 
             </div>
         <?php else: ?>
             <ul class="user-menu__list">
