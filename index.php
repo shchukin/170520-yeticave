@@ -4,6 +4,8 @@ $is_auth = rand(0, 1);
 $user_name = ''; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
 
+$rouble = '<b class="rub">р</b>';
+
 $cats = [
     [
         'alias' => 'boards',
@@ -69,6 +71,17 @@ $lots = [
         'preview' => 'img/lot-6.jpg'
     ]
 ];
+
+function cleanUpPrice ($value) {
+
+    global $rouble;
+
+    $value = ceil( $value );
+    $value = number_format($value, 0, '.', ' ');
+    $value = $value . $rouble;
+    return $value;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -145,7 +158,7 @@ $lots = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= $val['price'] ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= cleanUpPrice($val['price']) ?></span>
                         </div>
                         <div class="lot__timer timer">
 
