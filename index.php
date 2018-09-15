@@ -5,48 +5,66 @@ $user_name = ''; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
 
 $cats = [
-    'Доски и лыжи',
-    'Крепления',
-    'Ботинки',
-    'Одежда',
-    'Инструменты',
-    'Разное'
+    [
+        'alias' => 'boards',
+        'name' => 'Доски и лыжи'
+    ],
+    [
+        'alias' => 'attachment',
+        'name' => 'Крепления'
+    ],
+    [
+        'alias' => 'boots',
+        'name' => 'Ботинки'
+    ],
+    [
+        'alias' => 'clothing',
+        'name' => 'Одежда'
+    ],
+    [
+        'alias' => 'tools',
+        'name' => 'Инструменты'
+    ],
+    [
+        'alias' => 'other',
+        'name' => 'Разное'
+    ]
 ];
 
 $lots = [
     [
         'title' => '2014 Rossignol District Snowboard',
-        'cat' => 'Доски и лыжи',
+        'cat_id' => 0,
         'price' => 10999,
         'preview' => 'img/lot-1.jpg'
     ],
     [
         'title' => 'DC Ply Mens 2016/2017 Snowboard',
-        'cat' => 'Доски и лыжи',
+        'cat_id' => 0,
         'price' => 159999,
         'preview' => 'img/lot-2.jpg'
     ],
     [
         'title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-        'cat' => 'Крепления',
+        'cat_id' => 1,
         'price' => 8000,
         'preview' => 'img/lot-3.jpg'
     ],
     [
         'title' => 'Ботинки для сноуборда DC Mutiny Charocal',
-        'cat' => 'Ботинки',
+        'cat_id' => 2,
         'price' => 10999,
         'preview' => 'img/lot-4.jpg'
     ],
     [
         'title' => 'Куртка для сноуборда DC Mutiny Charocal',
-        'cat' => 'Одежда',
+        'cat_id' => 3,
         'price' => 7500,
         'preview' => 'img/lot-5.jpg'
     ],
     [
         'title' => 'Маска Oakley Canopy',
-        'cat' => 'Разное',
+        'cat_id' => 5,
         'price' => 5400,
         'preview' => 'img/lot-6.jpg'
     ]
@@ -105,8 +123,8 @@ $lots = [
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <?php foreach ($cats as $key => $val): ?>
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="#"><?= $val ?></a>
+            <li class="promo__item promo__item--<?= $val['alias'] ?>">
+                <a class="promo__link" href="#"><?= $val['name'] ?></a>
             </li>
             <?php endforeach; ?>
         </ul>
@@ -122,7 +140,7 @@ $lots = [
                     <img src="<?= $val['preview'] ?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?= $val['cat'] ?></span>
+                    <span class="lot__category"><?= $cats[ $val['cat_id'] ]['name'] ?></span>
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $val['title'] ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
@@ -146,7 +164,7 @@ $lots = [
         <ul class="nav__list container">
             <?php foreach ($cats as $key => $val): ?>
             <li class="nav__item">
-                <a href="#"><?=$val; ?></a>
+                <a href="#"><?=$val['name'] ?></a>
             </li>
             <?php endforeach; ?>
         </ul>
