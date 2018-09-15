@@ -3,6 +3,8 @@ $is_auth = rand(0, 1);
 
 $user_name = ''; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
+
+$cats = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -94,10 +96,11 @@ $user_avatar = 'img/user.jpg';
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <!--заполните этот список из массива категорий-->
+            <?php foreach ($cats as $key => $val): ?>
             <li class="nav__item">
-                <a href="pages/all-lots.html">Название категории</a>
+                <a href="#"><?=$val; ?></a>
             </li>
+            <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
