@@ -1,7 +1,7 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = ''; // укажите здесь ваше имя
+$user_name = 'Константин'; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
 
 $rouble = '<b class="rub">р</b>';
@@ -114,7 +114,8 @@ function cleanUpPrice($value)
                         <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
                     </div>
                     <div class="user-menu__logged">
-                        <p></p>
+                        <p><?= htmlspecialchars($user_name) ?></p>
+                        <a href="#">Выйти</a>
                     </div>
                 <?php else: ?>
                     <ul class="user-menu__list">
