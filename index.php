@@ -4,8 +4,6 @@ $is_auth = rand(0, 1);
 $user_name = 'Константин'; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
 
-$rouble = '<b class="rub">р</b>';
-
 $cats = [
     [
         'alias' => 'boards',
@@ -74,12 +72,9 @@ $lots = [
 
 function cleanUpPrice($value)
 {
-
-    global $rouble;
-
     $value = ceil($value);
     $value = number_format($value, 0, '.', ' ');
-    $value = $value . $rouble;
+    $value = $value . '<b class="rub">р</b>';
     return $value;
 }
 
