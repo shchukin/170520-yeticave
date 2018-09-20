@@ -73,7 +73,9 @@ $lots = [
 function cleanUpPrice($value)
 {
     $value = ceil($value);
-    $value = number_format($value, 0, '.', ' ');
+    if ($value >= 1000) {
+        $value = number_format($value, 0, '.', ' ');
+    }
     $value = $value . '<b class="rub">р</b>';
     return $value;
 }
