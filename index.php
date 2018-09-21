@@ -75,7 +75,7 @@ require('functions.php');
 
 
 
-$page_content = renderTemplate('index.php', ['lots' => $lots,
+$page_content = renderTemplate('main.php', ['lots' => $lots,
                                                     'cats' => $cats
 ]);
 
