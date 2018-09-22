@@ -1,6 +1,9 @@
 <?php
 $is_auth = rand(0, 1);
 
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$lotExpirationTime = strtotime('tomorrow midnight') - 1;
+
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
@@ -76,7 +79,8 @@ require('functions.php');
 
 
 $page_content = renderTemplate('main.php', ['lots' => $lots,
-                                                    'cats' => $cats
+                                                   'cats' => $cats,
+                                                   'lotExpirationTime' => calculateRemainTime($lotExpirationTime)
 ]);
 
 $layout_content = renderTemplate('layout.php', ['content' => $page_content,
