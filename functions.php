@@ -27,3 +27,7 @@ function cleanUpPrice($value)
     $value = $value . '<b class="rub">р</b>';
     return $value;
 }
+
+function calculateRemainTime($expirationTime) {
+    return $expirationTime - strtotime('now');
+}

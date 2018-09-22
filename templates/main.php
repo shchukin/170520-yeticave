@@ -33,7 +33,7 @@
                             <span class="lot__cost"><?= cleanUpPrice($val['price']) ?></span>
                         </div>
                         <div class="lot__timer timer">
-
+                            <?= floor($lotExpirationTime / 60 / 60 ) ?> : <?= floor( $lotExpirationTime / 60 ) % 60  ?>
                         </div>
                     </div>
                 </div>
