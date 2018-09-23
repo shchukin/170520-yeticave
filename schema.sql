@@ -4,8 +4,8 @@ CREATE DATABASE `yeticave`
 
 CREATE TABLE `category` (
 	`category_id` INT AUTO_INCREMENT PRIMARY KEY,
-	`name` CHAR(64),
-	`alias` CHAR(64)
+	`name` CHAR(64) UNIQUE,
+	`alias` CHAR(64) UNIQUE
 );
 
 CREATE TABLE `lot` (
@@ -33,9 +33,23 @@ CREATE TABLE `bid` (
 CREATE TABLE `user` (
 	`user_id` INT AUTO_INCREMENT PRIMARY KEY,
 	`registration_date` DATE,
-	`email` CHAR(64),
+	`email` CHAR(64) UNIQUE,
 	`name` CHAR(64),
 	`password` CHAR(64),
 	`avatar` CHAR(128),
 	`contacts` TEXT
 );
+
+
+ALTER TABLE `lot` ADD CONSTRAINT `lot_fk0` FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`);
+
+ALTER TABLE `lot` ADD CONSTRAINT `lot_fk1` FOREIGN KEY (`creator_id`) REFERENCES `user`(`user_id`);
+
+ALTER TABLE `lot` ADD CONSTRAINT `lot_fk2` FOREIGN KEY (`winner_id`) REFERENCES `user`(`user_id`);
+
+ALTER TABLE `bid` ADD CONSTRAINT `bid_fk0` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
+
+ALTER TABLE `bid` ADD CONSTRAINT `bid_fk1` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+
+
+CREATE INDEX `u_email` ON `user`(`email`);
