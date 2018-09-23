@@ -31,7 +31,7 @@ CREATE TABLE `bid` (
 );
 
 CREATE TABLE `user` (
-	`user_id` DATE AUTO_INCREMENT PRIMARY KEY,
+	`user_id` INT AUTO_INCREMENT PRIMARY KEY,
 	`registration_date` DATE,
 	`email` CHAR(64),
 	`name` CHAR(64),
