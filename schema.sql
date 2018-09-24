@@ -50,6 +50,3 @@ ALTER TABLE `lot` ADD CONSTRAINT `lot_fk2` FOREIGN KEY (`winner_id`) REFERENCES 
 ALTER TABLE `bid` ADD CONSTRAINT `bid_fk0` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
 
 ALTER TABLE `bid` ADD CONSTRAINT `bid_fk1` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
-
-
-CREATE INDEX `u_email` ON `user`(`email`);
