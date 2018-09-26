@@ -1,4 +1,4 @@
-CREATE DATABASE `yeticave`
+CREATE DATABASE `170520-yeticave`
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
