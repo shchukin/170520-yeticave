@@ -50,3 +50,22 @@ ALTER TABLE `lot` ADD CONSTRAINT `lot_fk2` FOREIGN KEY (`winner_id`) REFERENCES 
 ALTER TABLE `bid` ADD CONSTRAINT `bid_fk0` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
 
 ALTER TABLE `bid` ADD CONSTRAINT `bid_fk1` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+
+
+# Обращаемся к категориям по их алиасам
+CREATE INDEX `index_category_alias` ON `category` (`alias`);
+
+# Вытаскиваем лоты для конкретной категории
+CREATE INDEX `index_lot_category_id` ON `lot` (`category_id`);
+
+# Вытаскием лоты конкретного пользователя (например свой профиль)
+CREATE INDEX `index_lot_creator_id` ON `lot` (`creator_id`);
+
+# Когда смотрим конкретный лот нужно найти все его ставки, обращаемся к ставкам соответсвтенно
+CREATE INDEX `index_bid_lot_id` ON `bid` (`lot_id`);
+
+# Смотрим ставки от конкретного пользователя (например у себя в профиле)
+CREATE INDEX `index_bid_user_id` ON `bid` (`user_id`);
+
+# Вытаские пользователя по имейлу при авторизации
+CREATE INDEX `index_user_email` ON `user`(`email`);
