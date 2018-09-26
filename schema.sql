@@ -1,6 +1,10 @@
+DROP DATABASE `170520-yeticave`;
+
+
 CREATE DATABASE `170520-yeticave`
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
+
 
 CREATE TABLE `category` (
 	`category_id` INT AUTO_INCREMENT PRIMARY KEY,
