@@ -45,15 +45,15 @@ CREATE TABLE `user` (
 );
 
 
-ALTER TABLE `lot` ADD CONSTRAINT `lot_fk0` FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`);
+ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`);
 
-ALTER TABLE `lot` ADD CONSTRAINT `lot_fk1` FOREIGN KEY (`creator_id`) REFERENCES `user`(`user_id`);
+ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `user`(`user_id`);
 
-ALTER TABLE `lot` ADD CONSTRAINT `lot_fk2` FOREIGN KEY (`winner_id`) REFERENCES `user`(`user_id`);
+ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_winner_id` FOREIGN KEY (`winner_id`) REFERENCES `user`(`user_id`);
 
-ALTER TABLE `bid` ADD CONSTRAINT `bid_fk0` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
+ALTER TABLE `bid` ADD CONSTRAINT `bid_fk_lot_id` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
 
-ALTER TABLE `bid` ADD CONSTRAINT `bid_fk1` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+ALTER TABLE `bid` ADD CONSTRAINT `bid_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
 
 
 # Обращаемся к категориям по их алиасам
