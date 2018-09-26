@@ -12,27 +12,6 @@ CREATE TABLE `category` (
 	`alias` CHAR(64) UNIQUE
 );
 
-CREATE TABLE `lot` (
-	`lot_id` INT AUTO_INCREMENT PRIMARY KEY,
-	`title` CHAR(128),
-	`description` TEXT,
-	`image` CHAR(128),
-	`creation_date` DATETIME,
-	`expiry_date` DATETIME,
-	`price` INT,
-	`step` INT,
-	`category_id` INT,
-	`creator_id` INT,
-	`winner_id` INT
-);
-
-CREATE TABLE `bid` (
-	`bid_id` INT AUTO_INCREMENT PRIMARY KEY,
-	`placing_date` DATETIME,
-	`value` INT,
-	`lot_id` INT,
-	`user_id` INT
-);
 
 CREATE TABLE `user` (
 	`user_id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -45,12 +24,29 @@ CREATE TABLE `user` (
 );
 
 
-ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`);
+CREATE TABLE `lot` (
+	`lot_id` INT AUTO_INCREMENT PRIMARY KEY,
+	`title` CHAR(128),
+	`description` TEXT,
+	`image` CHAR(128),
+	`creation_date` DATETIME,
+	`expiry_date` DATETIME,
+	`price` INT,
+	`step` INT,
+	`category_id` INT,
+	`creator_id` INT,
+	`winner_id` INT,
+	FOREIGN KEY (`category_id`) REFERENCES `category`(`category_id`),
+  FOREIGN KEY (`creator_id`) REFERENCES `user`(`user_id`),
+  FOREIGN KEY (`winner_id`) REFERENCES `user`(`user_id`)
+);
 
-ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_creator_id` FOREIGN KEY (`creator_id`) REFERENCES `user`(`user_id`);
-
-ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_winner_id` FOREIGN KEY (`winner_id`) REFERENCES `user`(`user_id`);
-
-ALTER TABLE `bid` ADD CONSTRAINT `bid_fk_lot_id` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
-
-ALTER TABLE `bid` ADD CONSTRAINT `bid_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
+CREATE TABLE `bid` (
+	`bid_id` INT AUTO_INCREMENT PRIMARY KEY,
+	`placing_date` DATETIME,
+	`value` INT,
+	`lot_id` INT,
+	`user_id` INT,
+	FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
+);
