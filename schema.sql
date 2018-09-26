@@ -54,10 +54,3 @@ ALTER TABLE `lot` ADD CONSTRAINT `lot_fk_winner_id` FOREIGN KEY (`winner_id`) RE
 ALTER TABLE `bid` ADD CONSTRAINT `bid_fk_lot_id` FOREIGN KEY (`lot_id`) REFERENCES `lot`(`lot_id`);
 
 ALTER TABLE `bid` ADD CONSTRAINT `bid_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`);
-
-
-# Обращаемся к категориям по их алиасам
-CREATE INDEX `index_category_alias` ON `category` (`alias`);
-
-# Вытаские пользователя по имейлу при авторизации
-CREATE INDEX `index_user_email` ON `user`(`email`);
