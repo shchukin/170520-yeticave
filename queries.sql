@@ -95,10 +95,13 @@ VALUES
 
 
 # Все категории
+
 SELECT `alias`, `name` FROM `category`;
 
 
-# Три последних незакрытых лота
+
+# Три последних незакрытых лота (TO DO: цену (подсчитать?), количество ставок)
+
 SELECT `title`, `image`, `price`, `c`.`name` FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
 WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 3;
