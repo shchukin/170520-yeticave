@@ -113,7 +113,11 @@ JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
 WHERE `lot_id` = 1;
 
 
+# получить список самых свежих ставок для лота по его идентификатору;
 
+SELECT `placing_date`, `value`, `user_id`
+FROM `bid`
+WHERE `lot_id` = 5 ORDER BY `placing_date` DESC LIMIT 3;
 
 
 
