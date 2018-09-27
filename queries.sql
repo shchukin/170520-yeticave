@@ -33,3 +33,14 @@ VALUES
 ;
 
 
+
+INSERT INTO
+  `lot` (`title`, `description`, `image`, `creation_date`, `expiry_date`, `price`, `step`, `category_id`, `creator_id`, `winner_id`)
+VALUES
+    ('2014 Rossignol District Snowboard',                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',    'img/lot-1.jpg', '2018-09-27', '2018-11-03', 10999,  100, 1, 2, NULL),
+    ('DC Ply Mens 2016/2017 Snowboard',                   'Nam sit amet metus odio',                                    'img/lot-2.jpg', '2018-09-25', '2018-09-26', 159999, 20,  1, 1, 6),
+    ('Крепления Union Contact Pro 2015 года размер L/XL', 'Praesent et mollis libero. In sed arcu arcu.',               'img/lot-3.jpg', '2018-09-23', '2018-12-27', 8000,   10,  2, 4, NULL),
+    ('Ботинки для сноуборда DC Mutiny Charocal',          'Fusce in nibh gravida, consequat libero eu, pulvinar elit.', 'img/lot-4.jpg', '2018-09-24', '2018-12-31', 10999,  17,  3, 5, NULL),
+    ('Куртка для сноуборда DC Mutiny Charocal',           'Aliquam faucibus, mauris non vehicula commodo',              'img/lot-5.jpg', '2018-09-20', '2018-11-06', 7500,   99,  4, 3, NULL),
+    ('Маска Oakley Canopy',                               'Phasellus tempus nisl id consectetur dapibus',               'img/lot-6.jpg', '2018-09-27', '2018-11-02', 5400,   70,  5, 2, NULL)
+;
