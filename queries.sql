@@ -91,3 +91,6 @@ VALUES
 
     ('2018-09-27', 5470, 6, 2)
 ;
+
+
+SELECT `alias`, `name` FROM `category`;
