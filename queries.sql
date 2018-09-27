@@ -99,6 +99,18 @@ VALUES
 SELECT `alias`, `name` FROM `category`;
 
 
+# Лот по айдишнику с названием категории
+
+SELECT `title`, `description`, `image`, `creation_date`, `expiry_date`, `price`, `step`, `c`.`name`  FROM `lot` `l`
+JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
+WHERE `lot_id` = 1;
+
+
+
+
+
+
+
 
 # Три последних незакрытых лота (TO DO: цену (подсчитать?), количество ставок)
 
