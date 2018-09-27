@@ -93,4 +93,10 @@ VALUES
 ;
 
 
+
+# Все категории
 SELECT `alias`, `name` FROM `category`;
+
+
+# Три последних незакрытых лота
+SELECT * FROM `lot` WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 3;
