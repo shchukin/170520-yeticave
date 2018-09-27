@@ -105,3 +105,9 @@ SELECT `alias`, `name` FROM `category`;
 SELECT `title`, `image`, `price`, `c`.`name` FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
 WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 3;
+
+
+
+# Попытка вытащить лот с количеством ставок к нему
+#SELECT `title`, `image`, FROM `lot`;
+#SELECT COUNT(`bid_id`) FROM `bid` WHERE `lot_id` = 1
