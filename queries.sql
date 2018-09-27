@@ -94,17 +94,23 @@ VALUES
 
 
 
-# Все категории
+# Получить все категории
 
 SELECT `alias`, `name` FROM `category`;
 
 
-# Лот по айдишнику с названием категории
+# обновить название лота по его идентификатору;
+
+UPDATE `lot`
+SET `title` = 'Foo Bar'
+WHERE `lot_id` = 1;
+
+
+# Показать лот по его id. Получите также название категории, к которой принадлежит лот
 
 SELECT `title`, `description`, `image`, `creation_date`, `expiry_date`, `price`, `step`, `c`.`name`  FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
 WHERE `lot_id` = 1;
-
 
 
 
