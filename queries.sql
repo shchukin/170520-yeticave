@@ -1,15 +1,3 @@
--- INSERT INTO
---   `category`
--- SET
---     `alias` = 'boards', `name` = 'Доски и лыжи',
---     `alias` = 'attachment', `name` = 'Крепления',
---     `alias` = 'boots', `name` = 'Ботинки',
---     `alias` = 'clothing', `name` = 'Одежда',
---     `alias` = 'tools', `name` = 'Инструменты',
---     `alias` = 'other', `name` = 'Разное';
-
-
-
 INSERT INTO
   `category` (`alias`, `name`)
 VALUES
@@ -103,14 +91,14 @@ SELECT `alias`, `name` FROM `category`;
 
 UPDATE `lot`
 SET `title` = 'Foo Bar'
-WHERE `lot_id` = 1;
+WHERE `lot_id` = 5;
 
 
 # Показать лот по его id. Получите также название категории, к которой принадлежит лот
 
 SELECT `title`, `description`, `image`, `creation_date`, `expiry_date`, `price`, `step`, `c`.`name`  FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
-WHERE `lot_id` = 1;
+WHERE `lot_id` = 5;
 
 
 # получить список самых свежих ставок для лота по его идентификатору;
@@ -122,7 +110,7 @@ WHERE `lot_id` = 5 ORDER BY `placing_date` DESC LIMIT 3;
 
 
 
-# Три последних незакрытых лота (TO DO: цену (подсчитать?), количество ставок)
+# Три последних незакрытых лота (TO DO: цену, количество ставок)
 
 SELECT `title`, `image`, `price`, `c`.`name` FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
