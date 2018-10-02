@@ -110,11 +110,11 @@ WHERE `lot_id` = 5 ORDER BY `placing_date` DESC LIMIT 3;
 
 
 
-# Три последних незакрытых лота (TO DO: цену, количество ставок)
+# Шесть последних незакрытых лота (TO DO: цену, количество ставок)
 
-SELECT `title`, `image`, `price`, `c`.`name` FROM `lot` `l`
+SELECT `title`, `image`, `price`, `c`.`name` AS `category` FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
-WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 3;
+WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 6;
 
 
 
