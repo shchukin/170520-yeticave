@@ -7,32 +7,6 @@ $lotExpirationTime = strtotime('tomorrow midnight') - 1;
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
-$cats = [
-    [
-        'alias' => 'boards',
-        'name' => 'Доски и лыжи'
-    ],
-    [
-        'alias' => 'attachment',
-        'name' => 'Крепления'
-    ],
-    [
-        'alias' => 'boots',
-        'name' => 'Ботинки'
-    ],
-    [
-        'alias' => 'clothing',
-        'name' => 'Одежда'
-    ],
-    [
-        'alias' => 'tools',
-        'name' => 'Инструменты'
-    ],
-    [
-        'alias' => 'other',
-        'name' => 'Разное'
-    ]
-];
 
 $lots = [
     [
@@ -75,6 +49,30 @@ $lots = [
 
 
 require('functions.php');
+
+
+$con = mysqli_connect("localhost", "root", "", "170520-yeticave");
+
+if ($con == false) {
+    print("Ошибка подключения: " . mysqli_connect_error());
+} else {
+    mysqli_set_charset($con, "utf8");
+
+    
+    /* Вытаскиваем категории */
+
+    $sql = "SELECT `alias`, `name` FROM `category`";
+
+    $result = mysqli_query($con, $sql);
+
+    if (!$result) {
+        $error = mysqli_error($con);
+        print("Ошибка MySQL: " . $error);
+    } else {
+        $cats = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+}
 
 
 
