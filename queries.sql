@@ -120,9 +120,9 @@ WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 3;
 
 # лоты с количеством ставок к ним
 SELECT `title`, `image`, COUNT(`b`.`bid_id`) FROM `lot` `l`
-JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`
+JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`;
 
 
 # лоты с текущей ценой
 SELECT `title`, `image`, GREATEST( COALESCE(MAX(`b`.`value`), 0) , `l`.`price` ) FROM `lot` `l`
-LEFT JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`
+LEFT JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`;
