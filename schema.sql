@@ -8,27 +8,27 @@ CREATE DATABASE `170520-yeticave`
 
 CREATE TABLE `category` (
 	`category_id` INT AUTO_INCREMENT PRIMARY KEY,
-	`name` VARCHAR(64) UNIQUE,
-	`alias` VARCHAR(64) UNIQUE
+	`name` CHAR(64) UNIQUE,
+	`alias` CHAR(64) UNIQUE
 );
 
 
 CREATE TABLE `user` (
 	`user_id` INT AUTO_INCREMENT PRIMARY KEY,
 	`registration_date` DATE,
-	`email` VARCHAR(64) UNIQUE,
-	`name` VARCHAR(64),
-	`password` VARCHAR(64),
-	`avatar` VARCHAR(128),
+	`email` CHAR(64) UNIQUE,
+	`name` CHAR(64),
+	`password` CHAR(64),
+	`avatar` CHAR(128),
 	`contacts` TEXT
 );
 
 
 CREATE TABLE `lot` (
 	`lot_id` INT AUTO_INCREMENT PRIMARY KEY,
-	`title` VARCHAR(128),
+	`title` CHAR(128),
 	`description` TEXT,
-	`image` VARCHAR(128),
+	`image` CHAR(128),
 	`creation_date` DATETIME,
 	`expiry_date` DATETIME,
 	`price` INT,
