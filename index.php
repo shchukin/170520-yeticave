@@ -2,7 +2,7 @@
 
 $is_auth = rand(0, 1);
 
-date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 $lotExpirationTime = strtotime('tomorrow midnight') - 1;
 
 $user_name = 'Константин';
