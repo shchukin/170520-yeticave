@@ -50,43 +50,36 @@ $lots = [
 
 require('functions.php');
 
+require('db_connect.php');
 
-$con = mysqli_connect("localhost", "root", "", "170520-yeticave");
 
-if ($con == false) {
-    print("Ошибка подключения: " . mysqli_connect_error());
+/* Вытаскиваем категории */
+
+$sql = "SELECT `alias`, `name` FROM `category`";
+
+$result = mysqli_query($con, $sql);
+
+if (!$result) {
+    $error = mysqli_error($con);
+    print("Ошибка MySQL: " . $error);
 } else {
-    mysqli_set_charset($con, "utf8");
-
-
-    /* Вытаскиваем категории */
-
-    $sql = "SELECT `alias`, `name` FROM `category`";
-
-    $result = mysqli_query($con, $sql);
-
-    if (!$result) {
-        $error = mysqli_error($con);
-        print("Ошибка MySQL: " . $error);
-    } else {
-        $cats = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    }
-
-
-    /* Вытаскивание лотов */
-
-    $sql = "SELECT `title`, `image`, `price`, `c`.`name` AS `category` FROM `lot` `l` JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id` WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 6;";
-
-    $result = mysqli_query($con, $sql);
-
-    if (!$result) {
-        $error = mysqli_error($con);
-        print("Ошибка MySQL: " . $error);
-    } else {
-        $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    }
-
+    $cats = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
+
+/* Вытаскивание лотов */
+
+$sql = "SELECT `title`, `image`, `price`, `c`.`name` AS `category` FROM `lot` `l` JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id` WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 6;";
+
+$result = mysqli_query($con, $sql);
+
+if (!$result) {
+    $error = mysqli_error($con);
+    print("Ошибка MySQL: " . $error);
+} else {
+    $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 
 
 
