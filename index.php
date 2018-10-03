@@ -49,7 +49,6 @@ $lots = [
 ];
 
 
-require('functions.php');
 
 require('init.php');
 
