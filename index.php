@@ -2,9 +2,6 @@
 
 $is_auth = rand(0, 1);
 
-
-$lotExpirationTime = strtotime('tomorrow midnight') - 1;
-
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
@@ -30,7 +27,7 @@ if (!$result) {
 
 /* Вытаскивание лотов */
 
-$sql = "SELECT `title`, `image`, `price`, `c`.`name` AS `category` FROM `lot` `l` JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id` WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 6;";
+$sql = "SELECT `title`, `image`, `price`, `expiry_date`, `c`.`name` AS `category` FROM `lot` `l` JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id` WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 6;";
 
 $result = mysqli_query($con, $sql);
 
@@ -47,8 +44,7 @@ if (!$result) {
 
 
 $page_content = renderTemplate('main.php', ['lots' => $lots,
-                                                   'cats' => $cats,
-                                                   'lotExpirationTime' => calculateRemainTime($lotExpirationTime)
+                                                   'cats' => $cats
 ]);
 
 $layout_content = renderTemplate('layout.php', ['content' => $page_content,
