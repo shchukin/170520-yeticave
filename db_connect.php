@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors','Off');
+
 $con = mysqli_connect("localhost", "root", "", "170520-yeticave");
 
 if (!$con ) {
