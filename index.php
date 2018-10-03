@@ -51,7 +51,7 @@ $lots = [
 
 require('functions.php');
 
-require('db_connect.php');
+require('init.php');
 
 
 /* Вытаскиваем категории */
