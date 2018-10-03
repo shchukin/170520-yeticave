@@ -110,19 +110,19 @@ WHERE `lot_id` = 5 ORDER BY `placing_date` DESC LIMIT 3;
 
 
 
-# Три последних незакрытых лота (TO DO: цену, количество ставок)
+# Шесть последних незакрытых лота (TO DO: цену, количество ставок)
 
-SELECT `title`, `image`, `price`, `c`.`name` FROM `lot` `l`
+SELECT `title`, `image`, `price`, `c`.`name` AS `category` FROM `lot` `l`
 JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id`
-WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 3;
+WHERE `winner_id` IS NULL ORDER BY `creation_date` DESC LIMIT 6;
 
 
 
 # лоты с количеством ставок к ним
 SELECT `title`, `image`, COUNT(`b`.`bid_id`) FROM `lot` `l`
-JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`
+JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`;
 
 
 # лоты с текущей ценой
 SELECT `title`, `image`, GREATEST( COALESCE(MAX(`b`.`value`), 0) , `l`.`price` ) FROM `lot` `l`
-LEFT JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`
+LEFT JOIN `bid` `b` ON `b`.`lot_id` = `l`.`lot_id` GROUP BY `b`.`lot_id`;

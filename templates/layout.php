@@ -23,12 +23,12 @@
 
             <nav class="user-menu">
 
-                <?php if ($is_auth): ?>
+                <?php if(count($user)): ?>
                     <div class="user-menu__image">
-                        <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
+                        <img src="<?= $user['avatar'] ?>" width="40" height="40" alt="<?= htmlspecialchars($user['name']) ?>">
                     </div>
                     <div class="user-menu__logged">
-                        <p><?= htmlspecialchars($user_name) ?></p>
+                        <p><?= htmlspecialchars($user['name']) ?></p>
                         <a href="#">Выйти</a>
                     </div>
                 <?php else: ?>
