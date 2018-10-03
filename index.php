@@ -13,19 +13,17 @@ require('init.php');
 
 /* Вытаскиваем категории */
 
+
 $sql = "SELECT `alias`, `name` FROM `category`";
 
 $result = mysqli_query($con, $sql);
 
-if (!$result) {
-    $error = mysqli_error($con);
-    $page = renderTemplate('error.php', ['error' => $error]);
-    print($page);
-    exit();
-} else {
+
+$cats = [];
+
+if( $result ) {
     $cats = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
 
 /* Вытаскивание лотов */
 
@@ -33,15 +31,12 @@ $sql = "SELECT `title`, `image`, `price`, `expiry_date`, `c`.`name` AS `category
 
 $result = mysqli_query($con, $sql);
 
-if (!$result) {
-    $error = mysqli_error($con);
-    $page = renderTemplate('error.php', ['error' => $error]);
-    print($page);
-    exit();
-} else {
+
+$lots = [];
+
+if ($result) {
     $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
 
 
 
