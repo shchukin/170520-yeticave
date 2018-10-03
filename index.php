@@ -1,9 +1,11 @@
 <?php
 
-$is_auth = rand(0, 1);
+$user = [];
 
-$user_name = 'Константин';
-$user_avatar = 'img/user.jpg';
+if (rand(0, 1)) {
+    $user['name'] = 'Константин';
+    $user['avatar'] = 'img/user.jpg';
+}
 
 
 require('init.php');
@@ -50,9 +52,9 @@ $page_content = renderTemplate('main.php', ['lots' => $lots,
 $layout_content = renderTemplate('layout.php', ['content' => $page_content,
                                                        'cats' => $cats,
                                                        'title' => 'Yeti Cave',
-                                                       'is_auth' => $is_auth,
-                                                       'user_name' => $user_name,
-                                                       'user_avatar' => $user_avatar
+                                                       'user' => $user,
+                                                       'user_name' => $user['name'],
+                                                       'user_avatar' => $user['avatar']
 ]);
 
 print($layout_content);
