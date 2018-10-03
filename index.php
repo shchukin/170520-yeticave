@@ -84,8 +84,6 @@ if ($con == false) {
         print("Ошибка MySQL: " . $error);
     } else {
         $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-        var_dump($lots);
     }
 
 }
