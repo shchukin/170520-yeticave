@@ -32,7 +32,14 @@ function calculateRemainTime($expirationTime) {
 }
 
 
-function processExpiryDate($date) {
-    return str_pad(floor($date/60/60), 2, '0', STR_PAD_LEFT) . ':' . str_pad(floor($date/60)%60, 2, '0', STR_PAD_LEFT);
+function processExpiryDate($expiryDate) {
+
+    $timeLeft = $expiryDate - time();
+
+    if( $timeLeft >= 60 * 60 * 24 ) {
+        return floor($timeLeft / (60 * 60 * 24) ) . ' д.';
+    } else {
+        return str_pad(floor($timeLeft/60/60), 2, '0', STR_PAD_LEFT) . ':' . str_pad(floor($timeLeft/60)%60, 2, '0', STR_PAD_LEFT);
+    }
 }
 
