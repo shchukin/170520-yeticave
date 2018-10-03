@@ -18,8 +18,7 @@ function renderTemplate($name, $data) {
 }
 
 
-function cleanUpPrice($value)
-{
+function cleanUpPrice($value) {
     $value = ceil($value);
     if ($value >= 1000) {
         $value = number_format($value, 0, '.', ' ');
@@ -31,3 +30,9 @@ function cleanUpPrice($value)
 function calculateRemainTime($expirationTime) {
     return $expirationTime - strtotime('now');
 }
+
+
+function processExpiryDate($date) {
+    return str_pad(floor($date/60/60), 2, '0', STR_PAD_LEFT) . ':' . str_pad(floor($date/60)%60, 2, '0', STR_PAD_LEFT);
+}
+
