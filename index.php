@@ -20,7 +20,9 @@ $result = mysqli_query($con, $sql);
 
 if (!$result) {
     $error = mysqli_error($con);
-    print("Ошибка MySQL: " . $error);
+    $page = renderTemplate('error.php', ['error' => $error]);
+    print($page);
+    exit();
 } else {
     $cats = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
@@ -34,7 +36,9 @@ $result = mysqli_query($con, $sql);
 
 if (!$result) {
     $error = mysqli_error($con);
-    print("Ошибка MySQL: " . $error);
+    $page = renderTemplate('error.php', ['error' => $error]);
+    print($page);
+    exit();
 } else {
     $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
