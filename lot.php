@@ -32,9 +32,9 @@ $page_content = renderTemplate('lot.php', ['lot' => $lot,
 ]);
 
 $layout_content = renderTemplate('layout.php', ['content' => $page_content,
-    'cats' => $cats,
-    'title' => 'Yeti Cave',
-    'user' => $user
+                                                       'cats' => $cats,
+                                                       'user' => $user,
+                                                       'title' => $lot['title']
 ]);
 
 print($layout_content);

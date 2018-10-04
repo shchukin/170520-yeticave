@@ -21,10 +21,8 @@ $page_content = renderTemplate('main.php', ['lots' => $lots,
 
 $layout_content = renderTemplate('layout.php', ['content' => $page_content,
                                                        'cats' => $cats,
-                                                       'title' => 'Yeti Cave',
                                                        'user' => $user,
-                                                       'user_name' => $user['name'],
-                                                       'user_avatar' => $user['avatar']
+                                                       'title' => 'Yeti Cave'
 ]);
 
 print($layout_content);
