@@ -11,6 +11,13 @@
             </p>
         </div>
         <div class="lot-item__right">
+
+            <? if( $lot['winner_id'] ) : ?>
+
+            Лот завершен
+
+            <? else: ?>
+
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
                     <?= processExpiryDate(strtotime($lot['expiry_date'])); ?>
@@ -87,6 +94,9 @@
                     </tr>
                 </table>
             </div>
+
+            <? endif; ?>
+
         </div>
     </div>
 </section>

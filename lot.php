@@ -29,7 +29,7 @@ if( $result ) {
 
 /* Вытаскиваем лот */
 
-$sql = "SELECT `title`, `description`, `image`, `expiry_date`, `step`, `c`.`name` AS `category` FROM `lot` `l` JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id` WHERE `lot_id` = " . $lot_id;
+$sql = "SELECT `title`, `description`, `image`, `expiry_date`, `step`, `c`.`name` AS `category`, `winner_id` FROM `lot` `l` JOIN `category` `c` ON `l`.`category_id` = `c`.`category_id` WHERE `lot_id` = " . $lot_id;
 $result = mysqli_query($con, $sql);
 
 if ($result) {
