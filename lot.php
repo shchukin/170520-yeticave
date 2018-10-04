@@ -33,7 +33,14 @@ $sql = "SELECT `title`, `description`, `image`, `expiry_date`, `step`, `c`.`name
 $result = mysqli_query($con, $sql);
 
 if ($result) {
+
     $lot = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if( ! $lot ) {
+        $page = renderTemplate('error.php', ['error' => '404']);
+        print($page);
+        exit();
+    }
 }
 
 
