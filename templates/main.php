@@ -23,7 +23,7 @@
                 <div class="lot__info">
                     <span class="lot__category"><?= $val['category'] ?></span>
                     <h3 class="lot__title">
-                        <a class="text-link" href="pages/lot.html">
+                        <a class="text-link" href="lot.php?lot_id=<?= $val['lot_id']; ?>">
                             <?= htmlspecialchars($val['title']) ?>
                         </a>
                     </h3>
