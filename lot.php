@@ -18,7 +18,8 @@ if ($lot_id) {
 }
 
 if (!$lot) {
-    $page = renderTemplate('error.php', ['error' => '404']);
+    http_response_code(404);
+    $page = renderTemplate('error.php', ['error' => 'Лот не существует']);
     print($page);
     exit();
 }
