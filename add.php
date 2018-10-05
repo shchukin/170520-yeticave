@@ -9,14 +9,14 @@ if( ! empty($_POST) ) {
     /* Принимаем данные здесь */
 
 
-    $title         = $_POST['lot-name'] ?? '';
-    $description   = $_POST['message']  ?? '';
-    $image         = $_POST['photo']    ?? '';
+    $title         = $_POST['lot-name'] ?? '';      // длиннее чем varchar в базе
+    $description   = $_POST['message']  ?? '';      // длиннее чем varchar в базе
+    $image         = $_POST['photo']    ?? '';      // копирнуть файл, проверить размер и разрешение
     $creation_date = date ('Y-m-d', time());
-    $expiry_date   = $_POST['lot-date'] ?? '';
-    $price         = $_POST['lot-rate'] ?? '';
-    $step          = $_POST['lot-step'] ?? '';
-    $category_id   = $_POST['category'] ?? '';
+    $expiry_date   = $_POST['lot-date'] ?? '';      // проверить дату на формат и затем не в прошлом ли она и не далеко ли в будущем
+    $price         = $_POST['lot-rate'] ?? '';      // положительность цены, не превышает ли размер инта в базе
+    $step          = $_POST['lot-step'] ?? '';      // положительность шага, не превышает ли размер инта в базе
+    $category_id   = $_POST['category'] ?? '';      // существует ли такая категория
     $creator_id    = 1;
 
 
