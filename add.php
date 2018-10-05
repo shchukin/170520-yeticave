@@ -24,12 +24,8 @@ if( ! empty($_POST) ) {
     $sql = "INSERT INTO `lot` (`title`,   `description`,  `image`,  `creation_date`,  `expiry_date`,  `price`,   `step`,  `category_id`,  `creator_id`, `winner_id`) 
             VALUES            ('$title', '$description', '$image', '$creation_date', '$expiry_date', '$price',  '$step', '$category_id', '$creator_id', NULL)";
 
-    var_dump($sql);
-
     $result = mysqli_query($con, $sql);
-
-    var_dump($result);
-
+    
 } else {
 
     /* Рендерим страницу добавления */
