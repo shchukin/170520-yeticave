@@ -28,7 +28,7 @@ $lot_id = isset($_GET['lot_id']) ? intval($_GET['lot_id']) : 0;
 
 /* Рендерим страницу добавления */
 
-$page_content = renderTemplate('add.php', []);
+$page_content = renderTemplate('add.php', ['cats' => $cats]);
 
 $layout_content = renderTemplate('layout.php', ['content' => $page_content,
                                                        'cats' => $cats,

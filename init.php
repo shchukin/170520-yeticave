@@ -29,7 +29,7 @@ if (rand(0, 1)) {
 /* Вытаскиваем категории */
 
 
-$sql = "SELECT `alias`, `name` FROM `category`";
+$sql = "SELECT `category_id`, `alias`, `name` FROM `category`"; /* айдишник нужен на случай когда мы добавляем лот и нужно указать к какой категории он принадлежит в селекте */
 $result = mysqli_query($con, $sql);
 
 if( $result ) {

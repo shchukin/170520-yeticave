@@ -9,13 +9,11 @@
         <div class="form__item">
             <label for="category">Категория</label>
             <select id="category" name="category" required>
-                <option>Выберите категорию</option>
-                <option>Доски и лыжи</option>
-                <option>Крепления</option>
-                <option>Ботинки</option>
-                <option>Одежда</option>
-                <option>Инструменты</option>
-                <option>Разное</option>
+                <?php
+                    foreach ($cats as $key => $val) {
+                        print('<option value="' . $val['category_id'] . '">' . $val['name'] . '</option>');
+                    }
+                ?>
             </select>
             <span class="form__error">Выберите категорию</span>
         </div>
