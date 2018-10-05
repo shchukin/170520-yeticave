@@ -11,7 +11,7 @@ if( ! empty($_POST) ) {
 
     $title         = $_POST['lot-name'] ?? '';      // длиннее чем varchar в базе
     $description   = $_POST['message']  ?? '';      // длиннее чем varchar в базе
-    $image         = $_POST['photo']    ?? '';      // копирнуть файл, проверить размер и разрешение
+    $image         = $_POST['photo']    ?? '';      // копирнуть файл, проверить размер, разрешение, тип файла
     $creation_date = date ('Y-m-d', time());
     $expiry_date   = $_POST['lot-date'] ?? '';      // проверить дату на формат и затем не в прошлом ли она и не далеко ли в будущем
     $price         = $_POST['lot-rate'] ?? '';      // положительность цены, не превышает ли размер инта в базе
@@ -25,7 +25,11 @@ if( ! empty($_POST) ) {
             VALUES            ('$title', '$description', '$image', '$creation_date', '$expiry_date', '$price',  '$step', '$category_id', '$creator_id', NULL)";
 
     $result = mysqli_query($con, $sql);
-    
+
+    if( $result ) {
+        header("Location: lot.php?lot_id=" . mysqli_insert_id($con) );
+    }
+
 } else {
 
     /* Рендерим страницу добавления */
