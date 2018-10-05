@@ -123,10 +123,10 @@ if( ! empty($_POST) ) {
                                    `image` = \"" . $data['image'] . "\",
                                    `creation_date` = \"" . $data['creation_date'] . "\", 
                                    `expiry_date` = \"" . $data['expiry_date'] . "\",
-                                   `price` = 10999,  
-                                   `step` = 100, 
-                                   `category_id` = 1, 
-                                   `creator_id` = 2, 
+                                   `price` = \"" . $data['price'] . "\",  
+                                   `step` = \"" . $data['step'] . "\", 
+                                   `category_id` = \"" . $data['category_id'] . "\",
+                                   `creator_id` = \"1\", 
                                    `winner_id` = NULL";
 
 
