@@ -128,9 +128,7 @@ if( ! empty($_POST) ) {
 
 
     /* Если все валидации пройдена */
-
-    ;
-
+    
     $sql = "INSERT INTO `lot` SET  `title` = \"" . $title = $data['title'] . "\",
                                    `description` = \"" . $data['description'] . "\",   
                                    `image` = \"" . $data['image'] . "\",
