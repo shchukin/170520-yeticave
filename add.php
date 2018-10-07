@@ -20,18 +20,6 @@ if( ! empty($_POST) ) {
     $data['creator_id']    = 1;
 
 
-    /* Картинка */
-
-    $data['image'] = '';
-
-    if (isset($_FILES['photo'])) {
-        $file_name = $_FILES['photo']['name'];
-        $file_path = __DIR__ . '/img/';
-        $file_url = '/img/' . $file_name;
-        move_uploaded_file($_FILES['photo']['tmp_name'], $file_path . $file_name);
-        $data['image'] = $file_url;
-    }
-
 
     /* Валидация */
 
@@ -122,6 +110,21 @@ if( ! empty($_POST) ) {
 
         exit();
     }
+
+
+
+    /* Картинка */
+
+    $data['image'] = '';
+
+    if (isset($_FILES['photo'])) {
+        $file_name = $_FILES['photo']['name'];
+        $file_path = __DIR__ . '/img/';
+        $file_url = '/img/' . $file_name;
+        move_uploaded_file($_FILES['photo']['tmp_name'], $file_path . $file_name);
+        $data['image'] = $file_url;
+    }
+
 
 
     /* Если все валидации пройдена */
