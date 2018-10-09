@@ -71,14 +71,14 @@ if( ! empty($_POST) ) {
     /* price */
     if( empty($data['price']) ) {
         $validation['price'] = 'Введите цену';
-    } else if ( $data['price'] <= 0 ) {
+    } else if ( intval($data['price']) <= 0 ) {
         $validation['price'] = 'Введите цену больше нуля';
     }
 
     /* step */
     if( empty($data['step']) ) {
         $validation['step'] = 'Введите шаг';
-    } else if ( $data['step'] <= 0 ) {
+    } else if ( intval($data['step']) <= 0 ) {
         $validation['step'] = 'Введите шаг больше нуля';
     }
 
