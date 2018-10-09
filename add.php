@@ -152,9 +152,6 @@ if( ! empty($_POST) ) {
                                    `creator_id` = \"1\", 
                                    `winner_id` = NULL";
 
-
-    var_dump($sql);
-
     $result = mysqli_query($con, $sql);
 
     if( $result ) {
