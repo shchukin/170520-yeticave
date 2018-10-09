@@ -102,61 +102,62 @@ if( ! empty($_POST) ) {
     }
 
 
-    /* Если хоть одна из валидашек не была пройдена */
 
-    if ( !empty($validation) ) {
 
-        $page_content = renderTemplate('add.php', [
-            'cats' => $cats,
-            'data' => $data,
-            'validation' => $validation
-        ]);
+    if ( empty($validation) ) {
 
-        $layout_content = renderTemplate('layout.php', [
-            'content' => $page_content,
-            'cats' => $cats,
-            'user' => $user,
-            'title' => 'Добавить лот'
-        ]);
+        /* Картинка */
 
-        print($layout_content);
+        $data['image'] = '';
 
-        exit();
+        if (isset($_FILES['photo'])) {
+            $file_name = $_FILES['photo']['name'];
+            $file_path = __DIR__ . '/img/';
+            $file_url = '/img/' . $file_name;
+            move_uploaded_file($_FILES['photo']['tmp_name'], $file_path . $file_name);
+            $data['image'] = $file_url;
+        }
+
+
+        /* Если все валидации пройдена */
+
+        $sql = "INSERT INTO `lot` SET  `title` = \"" . $title = $data['title'] . "\",
+                                       `description` = \"" . $data['description'] . "\",   
+                                       `image` = \"" . $data['image'] . "\",
+                                       `creation_date` = \"" . $data['creation_date'] . "\", 
+                                       `expiry_date` = \"" . $data['expiry_date'] . "\",
+                                       `price` = \"" . $data['price'] . "\",  
+                                       `step` = \"" . $data['step'] . "\", 
+                                       `category_id` = \"" . $data['category_id'] . "\",
+                                       `creator_id` = \"1\", 
+                                       `winner_id` = NULL";
+
+        $result = mysqli_query($con, $sql);
+
+        if( $result ) {
+            header("Location: lot.php?lot_id=" . mysqli_insert_id($con) );
+        }
+
     }
 
 
 
-    /* Картинка */
+    /* Если хоть одна из валидашек не была пройдена, то мы пришли сюда */
 
-    $data['image'] = '';
+    $page_content = renderTemplate('add.php', [
+        'cats' => $cats,
+        'data' => $data,
+        'validation' => $validation
+    ]);
 
-    if (isset($_FILES['photo'])) {
-        $file_name = $_FILES['photo']['name'];
-        $file_path = __DIR__ . '/img/';
-        $file_url = '/img/' . $file_name;
-        move_uploaded_file($_FILES['photo']['tmp_name'], $file_path . $file_name);
-        $data['image'] = $file_url;
-    }
+    $layout_content = renderTemplate('layout.php', [
+        'content' => $page_content,
+        'cats' => $cats,
+        'user' => $user,
+        'title' => 'Добавить лот'
+    ]);
 
-
-    /* Если все валидации пройдена */
-
-    $sql = "INSERT INTO `lot` SET  `title` = \"" . $title = $data['title'] . "\",
-                                   `description` = \"" . $data['description'] . "\",   
-                                   `image` = \"" . $data['image'] . "\",
-                                   `creation_date` = \"" . $data['creation_date'] . "\", 
-                                   `expiry_date` = \"" . $data['expiry_date'] . "\",
-                                   `price` = \"" . $data['price'] . "\",  
-                                   `step` = \"" . $data['step'] . "\", 
-                                   `category_id` = \"" . $data['category_id'] . "\",
-                                   `creator_id` = \"1\", 
-                                   `winner_id` = NULL";
-
-    $result = mysqli_query($con, $sql);
-
-    if( $result ) {
-        header("Location: lot.php?lot_id=" . mysqli_insert_id($con) );
-    }
+    print($layout_content);
 
 } else {
 
