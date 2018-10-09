@@ -29,6 +29,8 @@ if( ! empty($_POST) ) {
     /* title */
     if( empty($data['title']) ) {
         $validation['title'] = 'Введите заголовок';
+    } else if ( strlen($data['title']) > 128 ) {
+        $validation['title'] = 'Введите заголовок короче 128 символов';
     }
 
     /* description */
