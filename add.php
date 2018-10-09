@@ -10,15 +10,15 @@ if( ! empty($_POST) ) {
 
     $data = [];
 
-    $data['title']         = $_POST['lot-name'] ?? '';      // длиннее чем varchar в базе
-    $data['description']   = $_POST['message']  ?? '';      // длиннее чем varchar в базе
+    $data['title']         = $_POST['lot-name'] ?? '';
+    $data['description']   = $_POST['message']  ?? '';
     $data['creation_date'] = date ('Y-m-d', time());
-    $data['expiry_date']   = $_POST['lot-date'] ?? '';      // проверить дату на формат и затем не в прошлом ли она и не далеко ли в будущем
-    $data['price']         = $_POST['lot-rate'] ?? '';      // положительность цены, не превышает ли размер инта в базе
-    $data['step']          = $_POST['lot-step'] ?? '';      // положительность шага, не превышает ли размер инта в базе
-    $data['category_id']   = $_POST['category'] ?? '';      // существует ли такая категория
+    $data['expiry_date']   = $_POST['lot-date'] ?? '';
+    $data['price']         = $_POST['lot-rate'] ?? '';
+    $data['step']          = $_POST['lot-step'] ?? '';
+    $data['category_id']   = $_POST['category'] ?? '';
     $data['creator_id']    = 1;
-    $data['image']         = $_FILES['photo'] ?? '';        // проверить тип файла
+    $data['image']         = $_FILES['photo'] ?? '';
 
 
 
