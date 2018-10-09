@@ -18,6 +18,7 @@ if( ! empty($_POST) ) {
     $data['step']          = $_POST['lot-step'] ?? '';      // положительность шага, не превышает ли размер инта в базе
     $data['category_id']   = $_POST['category'] ?? '';      // существует ли такая категория
     $data['creator_id']    = 1;
+    $data['image']         = $_FILES['photo'] ?? '';        // проверить тип файла
 
 
 
@@ -88,6 +89,20 @@ if( ! empty($_POST) ) {
         $validation['expiry_date'] = 'Введите дату из будущего';
     }
 
+    /* image */
+    if( empty($data['image']) ) {
+        $validation['image']  = 'Прикрепите файл';
+    } else {
+
+         $file_extension = mime_content_type( $_FILES['photo']['tmp_name'] );
+
+         var_dump($file_extension);
+
+         if( $file_extension !== 'image/jpeg' && $file_extension!== 'image/png' && $file_extension!== 'image/gif' ) {
+             $validation['image']  = 'Выберите JPG, PNG или GIF файл ';
+         }
+    }
+
 
     /* Если хоть одна из валидашек не была пройдена */
 
@@ -126,9 +141,8 @@ if( ! empty($_POST) ) {
     }
 
 
-
     /* Если все валидации пройдена */
-    
+
     $sql = "INSERT INTO `lot` SET  `title` = \"" . $title = $data['title'] . "\",
                                    `description` = \"" . $data['description'] . "\",   
                                    `image` = \"" . $data['image'] . "\",

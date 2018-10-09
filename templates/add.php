@@ -21,7 +21,7 @@
         <textarea id="message" name="message" placeholder="Напишите описание лота" required><? if( isset( $data['description'] ) ) print($data['description']); ?></textarea>
         <? if( isset( $validation['description'] ) ) print('<span class="form__error">' . $validation['description'] . '</span>'); ?>
     </div>
-    <div class="form__item form__item--file"> <!-- form__item--uploaded -->
+    <div class="form__item form__item--file <? if( isset( $validation['image'] ) ) print('form__item--invalid'); ?>"> <!-- form__item--uploaded -->
         <label>Изображение</label>
         <div class="preview">
             <button class="preview__remove" type="button">x</button>
@@ -30,11 +30,12 @@
             </div>
         </div>
         <div class="form__input-file">
-            <input class="visually-hidden" type="file" id="photo2" value="" name="photo">
+            <input class="visually-hidden" type="file" id="photo2" value="" name="photo" required>
             <label for="photo2">
                 <span>+ Добавить</span>
             </label>
         </div>
+        <? if( isset( $validation['image'] ) ) print('<span class="form__error">' . $validation['image'] . '</span>'); ?>
     </div>
     <div class="form__container-three">
         <div class="form__item form__item--small <? if( isset( $validation['price'] ) ) print('form__item--invalid'); ?>">
