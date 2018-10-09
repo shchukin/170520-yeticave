@@ -96,8 +96,6 @@ if( ! empty($_POST) ) {
 
          $file_extension = mime_content_type( $_FILES['photo']['tmp_name'] );
 
-         var_dump($file_extension);
-
          if( $file_extension !== 'image/jpeg' && $file_extension!== 'image/png' && $file_extension!== 'image/gif' ) {
              $validation['image']  = 'Выберите JPG, PNG или GIF файл ';
          }

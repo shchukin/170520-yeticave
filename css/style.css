@@ -914,6 +914,10 @@ input:invalid .form__error{
   border-color: #45abde;
 }
 
+.form__item--uploaded.form__item--file label span {
+  display: none;
+}
+
 .form__item--uploaded {
   position: relative;
 }
